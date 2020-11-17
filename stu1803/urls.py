@@ -19,5 +19,7 @@ from stu import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/',views.index)
+    path('index/',views.index),
+    path('login/',views.open_login),
+    path('reg/',views.open_reg)
 ]
