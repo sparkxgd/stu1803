@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/',views.index),
     path('login/',views.open_login),
-    path('reg/',views.open_reg)
+    path('reg/',views.open_reg),
+    path('denglu/',views.login)
 ]
