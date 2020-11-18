@@ -3,8 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <title>学生管理系统-登录</title>
+    <script type="text/javascript" src="../static/js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            //获取登录按钮
+            $("#denglu").click(function () {
+                //做的事情是把用户名和密码获取过来
+                var username = $("#username").val();
+                var password = $("#password").val();
+                //将用户名和密码提交到python
+                $.ajax({
+                    type:"post",//提交方式post/get
+                    url:"/denglu/",//提交到哪里去？提交地址
+                    data:{"username":username,"password":password},//提交的数据
+                    dataType:"json",
+                    success:function (d) {
+                        // 提交成功后要做的事情
+                        if(d.code==0){
+                            alert(d.msg);
+                            window.location.href = "/index/";
+                        }else{
+                            alert(d.msg);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+        body{
+         background-color: black;
+        }
+        .login{
+            color: white;
+            width: 300px;
+            height: 300px;
+            margin-left: 350px;
+            margin-top: 100px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px 10px white;
+        }
+        .login_title{
+            font-size: 25px;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid mediumspringgreen;
+        }
+        .login_item{
+            margin-top: 30px;
+            margin-left: 30px;
+        }
+        #denglu{
+            margin-left: 47px;
+            width: 173px;
+
+        }
+        .login_item input{
+            border: none;
+        }
+    </style>
 </head>
 <body>
-学生管理系统-登录
+
+<div class="login">
+    <div class="login_title">学生管理系统-登录</div>
+    <div class="login_item">账号：<input type="text" id="username"></div>
+    <div class="login_item">密码：<input type="password" id="password"></div>
+    <div class="login_item"><input type="button" value="登录" id="denglu"></div>
+</div>
+
 </body>
 </html>
